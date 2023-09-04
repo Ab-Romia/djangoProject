@@ -5,11 +5,17 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-def needs(request):
-    wants = """
-    <li>Ice Cream : mega and or oreo</li>
-    <li>chips cheetos and or sunbites</li>
-    <li>10 eggs</li>
-    <li>what else think .....</li>
-    """
-    return HttpResponse(wants)
+def home(request):
+    return HttpResponse("Welcome Home!")
+
+
+def menu(request):
+    return HttpResponse("Here is the menu")
+
+
+def about(request):
+    return HttpResponse("there is the alot to know about")
+
+
+def book(request):
+    return HttpResponse("Do you want to make a booking?")
