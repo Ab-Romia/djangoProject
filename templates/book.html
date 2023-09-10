@@ -1,0 +1,6 @@
+<h1 style="background-color: aqua">Welcome to the booking Form !</h1>
+<form action = "" style = "background-color: cadetblue", method = "post">
+{% csrf_token %}
+    {{ form.as_p }}
+    <input type = "submit" value = "Submit">
+</form>
