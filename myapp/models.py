@@ -4,11 +4,10 @@ from django.db import models
 
 # Create your models
 # here.
-class Menu(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.IntegerField()
-    description = models.TextField()
-    offer = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.name + " - " + str(self.price) + " - " + self.description + " - " + str(self.offer)
+class Reservation(models.Model):
+    name = models.CharField(max_length=100, blank=True)
+    contact = models.CharField('Contact Number', max_length=15)
+    datetime = models.DateTimeField('Date and Time of Reservation')
+    count = models.IntegerField('Number of People')
+    notes = models.TextField('Special Requests', blank=True)

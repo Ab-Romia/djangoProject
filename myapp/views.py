@@ -3,25 +3,16 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.decorators.http import condition
+from . import forms
+from .models import Reservation
 
 
-def home(request):
-    return HttpResponse("Welcome Home!")
-
-
-def menu(request):
-    return HttpResponse("Here is the menu")
-
-
-def about(request):
-    return HttpResponse("there is the alot to know about")
-
-
-def book(request):
-    return HttpResponse("Do you want to make a booking?")
-
-
-# a view that returns a template containing an input of username and password styled with bootstrap
-def login(request):
-    return render(request, 'login.html')
+def ReservationView(request):
+    if request.method == 'POST':
+        form = forms.ReservationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Reservation saved!')
+    else:
+        form = forms.ReservationForm()
+    return render(request, 'reservation.html', {'reservation': form})
