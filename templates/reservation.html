@@ -1,0 +1,25 @@
+<h1 style="background-color: aqua; text-align: center" class="header">Reservation Form</h1>
+<div style="text-align: center;">
+<form action = "" class="forms" method = "post">
+{% csrf_token %}
+    {{ reservation.as_p }}
+    <input type = "submit" value = "Submit">
+</form>
+</div>
+<!--- Styling a reservation form to center the page and look professional --->
+<style>
+    .forms{
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        border: 3px solid #73AD21;
+        padding: 10px;}
+    .header{
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        border: 3px solid #73AD21;
+        padding: 10px;
+    }
+
+</style>

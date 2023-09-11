@@ -1,14 +1,12 @@
 from django import forms
-from .models import Logger, Booking
+from .models import Reservation
 
 
-class BookingForm(forms.ModelForm):
+class ReservationForm(forms.ModelForm):
     class Meta:
-        model = Booking
+        model = Reservation
         fields = '__all__'
+        widgets = {
+            'datetime': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
 
-
-class LogForm(forms.ModelForm):
-    class Meta:
-        model = Logger
-        fields = '__all__'
