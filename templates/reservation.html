@@ -2,7 +2,10 @@
 <div style="text-align: center;">
 <form action = "" class="forms" method = "post">
 {% csrf_token %}
-    {{ reservation.as_p }}
+    <p id = '1'>Person Info</p>
+    {{ person_form.as_p }}
+    <p id = '2'>Reservation Info</p>
+    {{ reservation_form.as_p }}
     <input type = "submit" value = "Submit">
 </form>
 </div>

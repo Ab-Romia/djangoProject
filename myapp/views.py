@@ -7,12 +7,19 @@ from . import forms
 from .models import Reservation
 
 
+# Create a reservation view to take the reservation details from the user (name, contact, datetime, count, notes) and save it to the database.
+
 def ReservationView(request):
     if request.method == 'POST':
-        form = forms.ReservationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Reservation saved!')
+        person_form = forms.PersonForm(request.POST)
+        reservation_form = forms.ReservationForm(request.POST)
+        if person_form.is_valid() and reservation_form.is_valid():
+            person = person_form.save()
+            reservation = reservation_form.save(commit=False)
+            reservation.person = person
+            reservation.save()
+            return HttpResponse('Reservation is successful!')
     else:
-        form = forms.ReservationForm()
-    return render(request, 'reservation.html', {'reservation': form})
+        person_form = forms.PersonForm()
+        reservation_form = forms.ReservationForm()
+    return render(request, 'reservation.html', {'person_form': person_form, 'reservation_form': reservation_form})
