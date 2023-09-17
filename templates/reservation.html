@@ -3,7 +3,7 @@
 <form action = "" class="forms" method = "post">
 {% csrf_token %}
     <p id = '1'>Person Info</p>
-    {{ person_form.as_p }}
+    {{ person_form.as_table}}
     <p id = '2'>Reservation Info</p>
     {{ reservation_form.as_p }}
     <input type = "submit" value = "Submit">
